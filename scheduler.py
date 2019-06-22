@@ -15,6 +15,6 @@ class Scheduler:
 
     def _wait(self):
         while True:
-            time.sleep(self.waiting_time)
             self.interface.trigger_prompt()
+            time.sleep(self.waiting_time)
 
