@@ -1,11 +1,17 @@
 from tkinter import *
 from scheduler import Scheduler
+from saver import Saver
+
+class Prompt():
+    def __init__(self):
+        pass
 
 class Interface(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master.title("Diary Prompter")
         self.init_elements()
+        self.saver = Saver()
 
     def init_elements(self):
         self.label_1 = Label(
@@ -36,7 +42,7 @@ class Interface(Frame):
             self.master,
             width=20, height=5,
             text="Start!", 
-            command=lambda: self.start_button_command
+            command=lambda: self.start_button_command()
         )
         self.start_button.place(x=140, y=10)
 
@@ -44,6 +50,7 @@ class Interface(Frame):
         self.scheduler = Scheduler(self)
 
     def trigger_prompt(self):
+        self.saver._new_entry()
         print("lol")
 
 if __name__ == "__main__":
