@@ -1,10 +1,10 @@
 import time, threading
 
 class Scheduler:
-    def __init__(self, interface=None, timer=2, timer_measurement="seconds"):
+    def __init__(self, interface=None, timer=10, timer_measurement="seconds"):
         self.time_measurement_conv_table = {"seconds": 1, "minutes": 60, "hours": 3600}
         self.interface = interface
-        self.waiting_time = timer * self.time_measurement_conv_table[timer_measurement]
+        self.waiting_time = int(timer) * self.time_measurement_conv_table[timer_measurement]
 
         self._start_thread()
 

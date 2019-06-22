@@ -3,8 +3,34 @@ from scheduler import Scheduler
 from saver import Saver
 
 class Prompt():
-    def __init__(self):
-        pass
+    def __init__(self, main_window):
+        self.main_window = main_window
+        self.sub_window = Toplevel(self.main_window.master)
+        self.sub_window.wm_title("Diary Entry Time!")
+        self.sub_window.resizable(False, False)
+
+        self.text_box = Text(
+            self.sub_window,
+            width=84,
+            height=10
+        )
+        self.text_box.place(x=10, y=10)
+
+        self.submit_button = Button(
+            self.sub_window,
+            width=96,
+            height=3,
+            text="Submit!",
+            command=lambda: self.submit_entry()
+        )
+        self.submit_button.place(x=10, y=180)
+
+        self.sub_window.geometry("700x250")
+
+    def submit_entry(self):
+        entry = self.text_box.get('1.0', END)
+        self.main_window.saver._new_entry(entry)
+        self.sub_window.destroy()
 
 class Interface(Frame):
     def __init__(self, master=None):
@@ -47,14 +73,16 @@ class Interface(Frame):
         self.start_button.place(x=140, y=10)
 
     def start_button_command(self):
-        self.scheduler = Scheduler(self)
+        timer = self.text_box.get()
+        timer_measurement = self.option_menu_default.get()
+        self.scheduler = Scheduler(self, timer=timer, timer_measurement=timer_measurement)
 
     def trigger_prompt(self):
-        self.saver._new_entry()
-        print("lol")
+        Prompt(self)
 
 if __name__ == "__main__":
     root = Tk()
     root.geometry("300x120")
     interface = Interface(root)
+    root.resizable(False, False)
     root.mainloop()

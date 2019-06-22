@@ -3,6 +3,7 @@ from tkinter import Tk
 
 if __name__ == "__main__":
     root = Tk()
-    root.geometry("1100x530")
+    root.geometry("300x120")
     interface = Interface(root)
+    root.resizable(False, False)
     root.mainloop()
