@@ -11,6 +11,6 @@ No.
 
 ## Screenshots
 
-![Control Window] (https://raw.githubusercontent.com/TheTimebike/Scheduled-Diary/master/images/control_window.PNG)
+![Control Window](https://raw.githubusercontent.com/TheTimebike/Scheduled-Diary/master/images/control_window.PNG)
 
-![Entry Window] (https://raw.githubusercontent.com/TheTimebike/Scheduled-Diary/master/images/prompt_window.PNG)
+![Entry Window](https://raw.githubusercontent.com/TheTimebike/Scheduled-Diary/master/images/prompt_window.PNG)
